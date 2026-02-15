@@ -1,47 +1,47 @@
 # Auto Assignment Approval Script
 
-This script automates the approval process for assignments on **Fasih SM BPS**. It logs in using your SSO credentials, processes assignment links from a CSV file, and approves them one by one.
+Script ini mengotomatiskan proses persetujuan (approval) penugasan di **Fasih SM BPS**. Script akan login menggunakan akun SSO kamu, memproses link penugasan dari file CSV, dan menyetujuinya satu per satu.
 
-## Features
+## Fitur
 
-- 🔐 **Secure Login**: Prompts for your SSO username and password at runtime (no hardcoded credentials).
-- ⏳ **Smart Waits**: Automatically waits for buttons and elements to load before interacting, ensuring stability even with slow connections.
-- 🔁 **Auto-Retry**: Automatically tracks failed assignments and attempts to process them again after the main batch is finished.
-- 🚀 **Error Handling**: Skips problematic rows without crashing the entire script.
+- 🔐 **Login Aman**: Meminta username dan password SSO kamu saat dijalankan (tidak ada password yang disimpan di kode).
+- ⏳ **Smart Waits**: Otomatis menunggu tombol dan elemen muncul sebelum diklik, jadi aman kalau koneksi agak lambat.
+- 🔁 **Auto-Retry**: Kalau ada yang gagal, bakal diingat dan dicoba lagi otomatis di akhir proses.
+- 🚀 **Error Handling**: Kalau ada error di satu baris, script tetap jalan ke baris berikutnya.
 
-## Prerequisites
+## Prasyarat
 
-1.  **Python 3.x** installed.
-2.  **Google Chrome** browser installed.
-3.  Required Python packages:
+1.  **Python 3.x** terinstall.
+2.  **Google Chrome** terinstall.
+3.  Install library Python yang dibutuhkan:
 
     ```bash
     pip install selenium webdriver-manager
     ```
 
-## Usage
+## Cara Pakai
 
-1.  Ensure you have an `output.csv` file in the same directory. This file must contain a column named `Assignment Link`.
-2.  Run the script:
+1.  **Siapkan `input.txt`**:
+    - Buka halaman Fasih yang berisi tabel penugasan.
+    - Copy seluruh **HTML table content** dari tabel yang sudah di-approve oleh PML.
+    - Paste ke dalam file bernama `input.txt` di folder yang sama dengan script ini.
+    - Pastikan file `input.txt` KOSONGKAN isinya sebelum di-paste data baru agar bersih.
 
+2.  **Jalankan Konversi**:
+    - Script butuh `output.csv` yang dihasilkan dari `input.txt`.
+    - Pastikan kamu menjalankan `html_to_csv.py` terlebih dahulu (jika ada) atau pastikan `output.csv` sudah tersedia dari hasil ektrak `input.txt`.
+    *(Catatan: Script `approve_script.py` membaca `output.csv`)*
+
+3.  **Jalankan Script Approval**:
     ```bash
     python approve_script.py
     ```
 
-3.  Enter your SSO Username and Password when prompted.
-4.  The browser will open and start processing the assignments.
-5.  Sit back and relax! ☕
+4.  **Login**:
+    - Masukkan Username dan Password SSO saat diminta di terminal.
+    - Browser akan terbuka dan mulai memproses approval.
 
-## How it Works
-
-1.  **Login**: The script opens the login page and logs you in.
-2.  **Read CSV**: It reads `output.csv` to get the list of assignments.
-3.  **Process**: For each assignment:
-    - Navigates to the details page.
-    - Clicks **Review**.
-    - Clicks **Approve**.
-    - Confirms the action.
-4.  **Retry**: If any assignments fail (e.g., page didn't load, button missing), they are added to a retry list and processed again at the end.
+5.  Santai sejenak sambil script bekerja! ☕
 
 ---
 
