@@ -23,6 +23,13 @@ def main():
         print(f"Error: {CSV_FILE} not found.")
         return
 
+    # 0. Get Credentials First
+    print("="*50)
+    print("masukkan akun sso bps nya")
+    username = input("Enter your SSO Username: ")
+    password = getpass.getpass("Enter your SSO Password: ")
+    print("="*50)
+
     print("Initializing Browser...")
     
     options = webdriver.ChromeOptions()
@@ -62,10 +69,6 @@ def main():
         
         # Enter credentials
         print("   - Entering credentials...")
-        username = input("Enter your SSO Username: ")
-        password = getpass.getpass("Enter your SSO Password: ")
-
-        print("   - Entering credentials...")
         username_field.send_keys(username)
         
         password_field = driver.find_element(By.ID, "password")
@@ -74,6 +77,7 @@ def main():
         # Click Login
         login_btn = driver.find_element(By.ID, "kc-login")
         login_btn.click()
+
         print("   - Clicked 'Log In'")
         
         # Wait for login to complete (e.g., check for URL change or absence of login form)
