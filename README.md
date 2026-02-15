@@ -28,9 +28,11 @@ Script ini mengotomatiskan proses persetujuan (approval) penugasan di **Fasih SM
     - Pastikan file `input.txt` KOSONGKAN isinya sebelum di-paste data baru agar bersih.
 
 2.  **Jalankan Konversi**:
-    - Script butuh `output.csv` yang dihasilkan dari `input.txt`.
-    - Pastikan kamu menjalankan `html_to_csv.py` terlebih dahulu (jika ada) atau pastikan `output.csv` sudah tersedia dari hasil ektrak `input.txt`.
-    *(Catatan: Script `approve_script.py` membaca `output.csv`)*
+    - Setelah `input.txt` terisi, jalankan script konversi untuk membuat `output.csv`.
+    ```bash
+    python html_to_csv.py
+    ```
+    - Script ini akan membaca `input.txt` dan menghasilkan `output.csv` yang berisi daftar link penugasan.
 
 3.  **Jalankan Script Approval**:
     ```bash
